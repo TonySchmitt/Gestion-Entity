@@ -58,6 +58,7 @@ abstract class AbstractInteraction
         foreach ($entities as $entity) {
             $this->entityManager->remove($entity);
         }
+        $this->entityManager->flush();
     }
 
     public function getEntityParId(string $id): object
