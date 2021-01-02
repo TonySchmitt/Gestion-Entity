@@ -49,7 +49,7 @@ abstract class AbstractInteraction
 
     public function supprimerEntities(array $ids)
     {
-        $entities = $this->getRepository()->find($ids);
+        $entities = $this->getRepository()->findBy(['id' => $ids]);
 
         if (count($entities) != count($ids)) {
             throw new NotFoundHttpException('Impossible de trouver toutes les entités à supprimer.');

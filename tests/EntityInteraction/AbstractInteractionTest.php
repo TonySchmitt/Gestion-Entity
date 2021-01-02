@@ -89,8 +89,8 @@ class AbstractInteractionTest extends TestCase
         $repository = $this->createMock(EntityRepository::class);
 
         $repository->expects(self::once())
-            ->method('find')
-            ->with($ids)
+            ->method('findBy')
+            ->with(['id' => $ids])
             ->willReturn([new class() {
             }, new class() {
             }])
@@ -118,8 +118,8 @@ class AbstractInteractionTest extends TestCase
         $repository = $this->createMock(EntityRepository::class);
 
         $repository->expects(self::once())
-            ->method('find')
-            ->with($ids)
+            ->method('findBy')
+            ->with(['id' => $ids])
             ->willReturn($entities)
         ;
 
