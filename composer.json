@@ -1,0 +1,27 @@
+{
+    "type": "bundle",
+    "name": "tonyschmitt/gestion-entity",
+    "description": "$descriptionProjet",
+    "require": {
+        "php": "^7.4",
+        "symfony/http-kernel": "^5.0",
+        "symfony/framework-bundle": "^5.0",
+        "ramsey/uuid-doctrine": "^1.6",
+        "jms/serializer": "^3.11",
+        "symfony/orm-pack": "^2.1"
+    },
+    "require-dev": {
+        "symfony/yaml": "^5.0",
+        "symfony/phpunit-bridge": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "TonySchmitt\\GestionEntity\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TonySchmitt\\GestionEntity\\Tests\\": "tests/"
+        }
+    }
+}

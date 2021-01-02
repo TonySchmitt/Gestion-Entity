@@ -1,0 +1,8 @@
+# .gitignore
+
+/build
+/vendor
+/tests/App/cache
+/tests/App/logs
+.idea
+.phpunit.result.cache

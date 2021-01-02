@@ -1,0 +1,28 @@
+{
+  "name": "GestionEntity",
+  "version": "0.1.0",
+  "scripts": {
+    "install": "docker-compose exec -u www-data -T php composer install --working-dir=GestionEntity",
+    "start": "docker-compose up -d && npm run install",
+    "composer:require": "docker-compose exec -u www-data -T php composer require --working-dir=GestionEntity",
+
+    "phpqa": "npm run phpqa:stop && npm run phpqa:build && npm run phpqa:run && npm run phpqa:exec && npm run phpqa:stop",
+    "phpqa:build": "docker build ./docker/phpqa --tag GestionEntity/phpqa",
+    "phpqa:run": "docker run -d -v $PWD:/app --name phpqa-GestionEntity GestionEntity/phpqa",
+    "phpqa:exec": "docker exec -i phpqa-GestionEntity sh -c 'cd /app && phpqa --report --ignoredDirs vendor,build,migrations,test,bin,var,public --ignoredFiles config/bootstrap.php --tools phpmetrics:0,phpcs:0,phpcs:0,phpmd:0,phpcpd:0,phpstan:0,psalm:0,security-checker:0,parallel-lint:0'",
+    "phpqa:stop": "docker stop phpqa-GestionEntity || true && docker rm -f phpqa-GestionEntity || true",
+
+    "phpcsf": "docker-compose exec -u www-data -T php bash -c \"cd GestionEntity && vendor/bin/php-cs-fixer fix\"",
+
+    "phpunit": "docker-compose exec -u www-data -T php bash -c \"cd GestionEntity && php bin/phpunit\"",
+    "sy:co": "docker-compose exec -u www-data -T php php GestionEntity/bin/console "
+  },
+  "devDependencies": {
+    "husky": "^3.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run phpqa"
+    }
+  }
+}

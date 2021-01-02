@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/apache/Dockerfile
+    ports:
+      - 8950:8000
+    volumes:
+      - ./docker/apache/sites-enabled/GestionEntity.conf:/etc/apache2/sites-enabled/GestionEntity.conf
+      - ./:/var/www/html/GestionEntity/
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
