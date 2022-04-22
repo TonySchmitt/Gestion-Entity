@@ -3,7 +3,7 @@
     "name": "tonyschmitt/gestion-entity",
     "description": "$descriptionProjet",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 | ^8.0",
         "symfony/http-kernel": "^5.0",
         "symfony/framework-bundle": "^5.0",
         "ramsey/uuid-doctrine": "^1.6",
